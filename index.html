@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/home.css" />
+    <title>Quiz App</title>
+  </head>
+  <body class="bg-base">
+    <div class="fixed top-[20px] min-w-full flex justify-center">
+      <img src="./assests/bg-logo.png" />
+    </div>
+    <div class="max-w-[420px] mx-auto bg-base min-h-screen">
+      <div
+        class="mobile-home flex flex-col justify-between min-h-screen p-[20px]"
+      >
+        <img src="./assests/logo.svg" alt="Logo" class="mx-auto w-[7rem]" />
+        <div
+          class="fixed bottom-[20px] min-w-full px-[20px] flex justify-center left-0"
+        >
+          <div class="flex flex-col items-center gap-[25px] max-w-[420px]">
+            <p class="text-[2rem] leading-[40px] font-bold self-start">
+              The ultimate trivia <br />battleground
+            </p>
+            <p class="text-sm leading-[20px]">
+              Challenge friends and foes in a real-time trivia showdown. Prove
+              your knowledge and climb the leaderboard in this thrilling
+              multiplayer quiz game.
+            </p>
+            <div class="flex gap-[10px] w-full">
+              <a
+                href="./pages/createQuiz.html"
+                class="quiz-btn bg-[#00FFCC] w-full rounded-[20px] p-[var(--padd)] flex justify-between"
+              >
+                <p
+                  class="text-[#000] font-bold text-[1.3rem] pt-[var(--padd)] leading-[25px]"
+                >
+                  Create <br />
+                  Quiz room
+                </p>
+                <img
+                  src="./assests/createQuiz.svg"
+                  alt="create quiz room"
+                  class="self-start top-[var(--padd)] right-[var(--padd)]"
+                />
+              </a>
+              <a
+                href="./pages/joinRoom.html"
+                class="quiz-btn bg-[#BD71FF] w-full rounded-[20px] p-[var(--padd)] flex justify-between"
+              >
+                <p
+                  class="text-[#000] font-bold text-[1.3rem] pt-[var(--padd)] leading-[25px]"
+                >
+                  Join <br />
+                  Quiz Room
+                </p>
+                <img
+                  src="./assests/joinQuiz.svg"
+                  alt="join quiz room"
+                  class="self-start top-[var(--padd)] right-[var(--padd)]"
+                />
+              </a>
+            </div>
+            <img src="./assests/seperater.svg" class="max-w-[50px]" />
+            <div
+              class="flex gap-[10px] justify-center border-2 rounded-[var(--padd)] border-[#fff] p-[var(--padd)] w-full"
+              style="display: none"
+            >
+              <img src="./assests/que.svg" />
+              <p class="quickQuiz">Start a quick quiz</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

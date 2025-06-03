@@ -1,0 +1,195 @@
+.fixed {
+  position: fixed;
+}
+
+.bottom-\[20px\] {
+  bottom: 20px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right-\[var\(--padd\)\] {
+  right: var(--padd);
+}
+
+.top-\[20px\] {
+  top: 20px;
+}
+
+.top-\[var\(--padd\)\] {
+  top: var(--padd);
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.w-\[7rem\] {
+  width: 10rem;
+  margin-top: 5px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.min-w-full {
+  min-width: 100%;
+}
+
+.max-w-\[420px\] {
+  max-width: 420px;
+}
+
+.max-w-\[50px\] {
+  max-width: 50px;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-\[10px\] {
+  gap: 10px;
+}
+
+.gap-\[25px\] {
+  gap: 25px;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.rounded-\[20px\] {
+  border-radius: 20px;
+}
+
+.rounded-\[var\(--padd\)\] {
+  border-radius: var(--padd);
+}
+
+.border-2 {
+  border: 2px solid #fff;
+}
+
+.border-\[\#fff\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.bg-\[\#00FFCC\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 255 204 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#BD71FF\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(189 113 255 / var(--tw-bg-opacity));
+}
+
+.bg-base {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.p-\[20px\] {
+  padding: 20px;
+}
+
+.p-\[var\(--padd\)\] {
+  padding: var(--padd);
+}
+
+.px-\[20px\] {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.pt-\[var\(--padd\)\] {
+  padding-top: var(--padd);
+}
+
+.text-\[1\.3rem\] {
+  font-size: 2rem;
+}
+
+.text-\[2rem\] {
+  font-size: 3rem;
+}
+
+.text-sm {
+  font-size: 1.4rem;
+  line-height: 1.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.leading-\[20px\] {
+  line-height: 20px;
+}
+
+.leading-\[25px\] {
+  line-height: 25px;
+}
+
+.leading-\[40px\] {
+  line-height: 40px;
+}
+
+.text-\[\#000\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-\[var\(--color\)\] {
+  color: var(--color);
+}
+
+.quickQuiz {
+  font-size: 1.6rem;
+}
+
+.quiz-btn {
+  text-decoration: none;
+  /* max-height: 9rem; */
+}
+
+@media only screen and (max-width: 370px) {
+  .quiz-btn {
+    padding: 10px 15px;
+  }
+
+  .quiz-btn p {
+    font-size: 1.6rem;
+  }
+
+  .quiz-btn img {
+    width: 2.3rem;
+  }
+}

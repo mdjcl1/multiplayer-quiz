@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/joinRoom.css" />
+    <link rel="stylesheet" href="../styles/loader.css" />
+    <title>Join Quiz Room</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="logoBox">
+        <img
+          src="../assests/logo.svg"
+          alt="Logo"
+          class="mx-auto w-[7rem] logo"
+        />
+      </div>
+
+      <!--in div, add joinError class to show error message -->
+      <div class="contentBox">
+        <p class="label">Enter Room Code</p>
+        <input
+          type="text"
+          class="mainInput"
+          id="userInput"
+          placeholder="FuRtuR"
+        />
+      </div>
+
+      <div class="mainBtnBox">
+        <button
+          type="button"
+          class="bottomBtn disableBtn hostLoading"
+          id="joinBtn"
+          disabled
+        >
+          <div class="loaderBox hide" id="loaderBox">
+            <div class="loader"></div>
+            <p>Joining</p>
+          </div>
+          <img src="../assests/joinQuiz.svg" class="hide" id="enableJoinImg" />
+          <img
+            src="../assests/disableJoinQuiz.svg"
+            class="disableJoin"
+            id="disableJoinImg"
+          />
+          <p class="btnTitle">Join Room</p>
+        </button>
+      </div>
+    </div>
+    <script type="module" src="../scripts/joinRoom.js"></script>
+  </body>
+</html>

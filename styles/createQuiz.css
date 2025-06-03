@@ -1,0 +1,159 @@
+.createQuizMain {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 20px;
+}
+
+.queTimeBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.headerTitle {
+  font-size: 2.4rem;
+}
+
+.qaLogo {
+  height: 2.4rem;
+}
+
+.subDesc {
+  font-size: 1.2rem;
+  color: #585858;
+}
+
+.queTimeInput {
+  font-size: 2rem;
+  padding: 10px;
+  max-width: 70px;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 550;
+}
+
+.inSec {
+  position: relative;
+}
+
+.inSec::before {
+  content: "s";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  right: 10px;
+  color: #8a8a8a;
+  font-weight: 550;
+}
+
+.shuffle {
+  display: flex;
+  gap: 10px;
+}
+
+.shuffle > input {
+  height: 20px;
+  width: 20px;
+  margin-top: 3px;
+  margin-bottom: auto;
+}
+
+.shuffle .subDesc,
+.temp {
+  width: 75%;
+}
+
+.quizCardBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.quizCard {
+  color: var(--color);
+  text-align: left;
+  height: 100px;
+  padding: 15px;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  position: absolute;
+  bottom: 15px;
+  z-index: 1;
+}
+
+.quizCard:nth-child(1) {
+  background-color: var(--inputBgColor);
+}
+
+.quizCard:nth-child(2) {
+  background-color: #683eff;
+}
+
+.quizCard:nth-child(3) {
+  background-color: #5eff3e;
+}
+
+.quizCard:nth-child(4) {
+  background-color: #ffe23e;
+}
+
+.cardImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.blTitle {
+  color: #000;
+}
+
+.footerOverlay {
+  background-image: linear-gradient(transparent, #000 95%);
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  bottom: -10px;
+  left: 0;
+  pointer-events: none;
+}
+
+.active-card {
+  outline: 2px solid var(--color);
+}
+
+.tickSign {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.createQuizNextBtn {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  padding: 20px 40px;
+  border-radius: 5rem;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* .shuffleInput {
+  accent-color: white;
+} */

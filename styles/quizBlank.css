@@ -1,0 +1,264 @@
+input {
+  color: var(--color);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+}
+
+body > .main-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.header {
+  padding: 0 20px;
+}
+
+.queCounter,
+.quesCounterBox {
+  display: flex;
+  gap: 5px;
+}
+
+.quesCounterBox {
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  background-color: #0f0f0f;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  /* transform: scaleX(112%); */
+}
+
+.aiGenerate {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* style for note div */
+
+/* .noQuesNote {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-bottom: 20%;
+} */
+
+/* .noQuesNote > p:first-child {
+  font-size: 2rem;
+  color: #515151;
+}
+
+.noQuesNote > p:last-child {
+  color: #323232;
+  font-size: 1.4rem;
+} */
+
+/* .noQuesNote > p:last-child span {
+  border-bottom: 1px solid #323232;
+  padding-bottom: 2px;
+} */
+
+.allQuesBox {
+  margin-top: 1.6rem;
+  padding: 0 20px;
+}
+
+.quesBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 60px;
+}
+
+.quesBox:last-child {
+  margin-bottom: 8rem;
+}
+
+.queSet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.queSl,
+.optSl {
+  color: var(--inputBorderColor);
+  font-size: 2rem;
+}
+
+.question,
+.questionOpt {
+  display: flex;
+  width: 100%;
+  /* flex: 1; */
+  background-color: var(--inputBgColor);
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+}
+
+.optionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 25px;
+  pointer-events: none;
+  /* margin-bottom: 10px; */
+  /* margin-bottom: 10px; */
+}
+
+.optionBox input {
+  pointer-events: all;
+}
+
+.queDrag,
+.optionDrag {
+  cursor: pointer;
+  display: none;
+}
+
+.correctOptionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  pointer-events: none;
+}
+
+.correctOptionBox p {
+  margin-bottom: 10px;
+}
+
+.correctOpt {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.correctOpt > button {
+  background-color: var(--inputBgColor);
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.correctOpt .activeOption {
+  background-color: #249f62;
+}
+
+.addQues {
+  background: radial-gradient(#000 40%, transparent, transparent);
+}
+
+/* .actionBtn button {
+  cursor: pointer;
+  pointer-events: all;
+} */
+
+/* .actionBtnBox {
+  background-image: linear-gradient(transparent, #000);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 11rem;
+  padding-top: 3rem;
+  pointer-events: none;
+} */
+
+/* .actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 420px;
+  padding: 0 20px;
+} */
+
+/* .hostQuiz {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.6rem;
+  font-weight: 550;
+  padding: 10px 20px;
+  border-radius: 4rem;
+  background-color: #3e98ff;
+} */
+
+/* .queDeleteBtn {
+  background-color: #e82b2b;
+  height: 48px;
+  width: 48px;
+  border-radius: 1.2rem;
+} */
+
+.queSet .question,
+.questionOpt {
+  width: 100%;
+}
+
+.aiOverlay {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aiBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.loading .loader {
+  width: 50px;
+  height: 50px;
+}
+
+.aiBox p {
+  font-size: 2rem;
+}
+
+.cancelAiQue {
+  background-color: #ff3838;
+  color: #fff;
+  position: absolute;
+  bottom: 50px;
+  padding: 10px 20px;
+  font-size: 2rem;
+  border-radius: 5px;
+}

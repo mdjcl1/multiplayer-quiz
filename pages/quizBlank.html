@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/quizBlank.css" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/loader.css" />
+    <script type="module" src="../scripts/quizBlank.js" defer></script>
+    <title>Create Quiz</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <div>
+          <p class="headerTitle">Create Quiz</p>
+          <img src="../assests/zigzagLine.svg" />
+        </div>
+        <img src="../assests/QALogo.svg" alt="Quiz App Logo" class="qaLogo" />
+      </header>
+      <div class="quesCounterBox">
+        <div class="queCounter">
+          <p id="counter">0/8</p>
+          <p>Questions</p>
+        </div>
+        <!-- <button class="aiGenerate">
+          <img
+            src="../assests/sparkle.svg"
+            alt="AI Help to generate questions"
+          />
+        </button> -->
+      </div>
+
+      <!-- if no question then remove hide class-->
+      <!-- <div class="noQuesNote">
+        <p>No Questions Added Yet</p>
+        <p>Add new question or <span>Generate</span> using AI</p>
+      </div> -->
+
+      <!-- question container -->
+      <div class="allQuesBox" id="allQuesBox">
+        <!-- <div class="quesBox"> -->
+        <!-- quesBox contain one question with their option and correct option to select-->
+        <!-- <div class="queSet">
+            <p class="queSl">1.</p>
+            <input
+              type="text"
+              class="question"
+              placeholder="Write Your Question"
+            />
+            <img
+              src="/assests/queDrag.svg"
+              alt="Drag question"
+              class="queDrag"
+            />
+          </div> -->
+
+        <!-- options for the question -->
+        <!-- <div class="optionBox">
+            <div class="queSet">
+              <p class="queSl">A.</p>
+              <input type="text" class="question" placeholder="Option A" />
+              <img
+                src="/assests/optionDrag.svg"
+                alt="Drag question"
+                class="optionDrag"
+              />
+            </div>
+            <div class="queSet">
+              <p class="queSl">B.</p>
+              <input type="text" class="question" placeholder="Option B" />
+              <img
+                src="/assests/optionDrag.svg"
+                alt="Drag question"
+                class="optionDrag"
+              />
+            </div>
+            <div class="queSet">
+              <p class="queSl">C.</p>
+              <input type="text" class="question" placeholder="Option C" />
+              <img
+                src="/assests/optionDrag.svg"
+                alt="Drag question"
+                class="optionDrag"
+              />
+            </div>
+            <div class="queSet">
+              <p class="queSl">D.</p>
+              <input type="text" class="question" placeholder="Option D" />
+              <img
+                src="/assests/optionDrag.svg"
+                alt="Drag question"
+                class="optionDrag"
+              />
+            </div>
+          </div>
+
+          <div class="correctOptionBox">
+            <p class="headingTitle">Choose Correct Option</p>
+            <div class="correctOpt">
+              <button class="activeOption">A</button>
+              <button>B</button>
+              <button>C</button>
+              <button>D</button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <!-- end of question container -->
+
+      <div class="actionBtnBox">
+        <div class="actionBtn">
+          <button class="queDeleteBtn invisible" id="queDeleteBtn">
+            <img src="../assests/delete.svg" alt="Add Question" />
+          </button>
+          <button class="addQues hide" id="addQues">
+            <img src="../assests/addBtn.svg" alt="Add Question" />
+          </button>
+          <button class="hostQuiz hostLoading" id="hostQuiz">
+            <div class="loaderBox hide" id="loaderBox">
+              <div class="loader"></div>
+              <p>Hosting</p>
+            </div>
+            <div class="hostImg">
+              <img src="../assests/host.svg" /> Host Quiz
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="aiOverlay hide" id="aiOverlay">
+        <div class="aiBox">
+          <div class="loading hostLoading">
+            <div class="loader"></div>
+            <p>Generating Question</p>
+          </div>
+          <button class="cancelAiQue" id="cancelAiQue">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,392 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 5rem; */
+}
+
+.quizGround {
+  gap: 5rem;
+  position: relative;
+}
+
+/* header style */
+.pgHeader {
+  height: fit-content;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.playerInfoBox,
+.pgHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playerInfoBox .avatarBox {
+  width: 60px;
+  height: 60px;
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.playerInfo .pgPlayerName {
+  font-size: 1.4rem;
+  color: #d3d3d3;
+}
+
+.playerInfo p {
+  color: #989898;
+}
+
+.pRank {
+  color: #ffae3e;
+}
+
+.pScore {
+  color: #a769d7;
+}
+
+.playerInfo p,
+.pRank,
+.pScore {
+  font-size: 1.2rem;
+}
+
+.scoreBoardBtn {
+  /* width: 10rem; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #0b1302;
+  border: 2px solid #263f0d;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pgImg {
+  width: 2rem;
+  pointer-events: none;
+}
+
+.scoreBoardBtn p {
+  font-size: 1.2rem;
+  color: #65ab1f;
+  pointer-events: none;
+}
+
+/* header style end */
+
+/* question containing box style */
+.pgQuestionBox {
+  background-image: linear-gradient(#0f0f0f, #000 50%);
+  /* border: 1px solid red; */
+  padding: 0 20px;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.quesTimerBox {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  transform: translateY(-50%);
+}
+
+.quesTimerBox p:first-child {
+  color: #000;
+  font-weight: 550;
+  font-size: 1.6rem;
+  background-color: #7687f6;
+  padding: 8px 15px;
+  border-radius: 10px;
+}
+
+.queTimer {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  padding: 18px;
+  border: 5px solid #ffe23e;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.pgQuestion {
+  font-size: 2.2rem;
+}
+
+.pgOptionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.pgOptions {
+  background-color: var(--onlinePlayerBg);
+  color: #fff;
+  font-size: 2rem;
+  padding: 15px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pgOptions:focus {
+  outline: none;
+}
+
+.scoreboardOverlay {
+  /* border: 1px solid red; */
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  /* display: none; */
+  /* bottom: 0; */
+  left: 0;
+  /* overflow: scroll; */
+}
+
+.scoreBox {
+  max-width: 420px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: scroll;
+  padding-bottom: 100px;
+}
+
+.scoreBox::-webkit-scrollbar {
+  display: none;
+}
+
+.nextQueOverlay {
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  left: 0;
+  top: 0;
+}
+
+.nextQueOverlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+}
+
+.nextQueOverlay,
+.nextCountDownBox,
+.countDown {
+  display: flex;
+  align-items: center;
+  color: #ffae3e;
+}
+
+.nextCountDownBox p:first-of-type {
+  font-size: 2.4rem;
+}
+
+.nextCountDownBox {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.countDown {
+  justify-content: center;
+  height: 90px;
+  width: 90px;
+  font-size: 3rem;
+  font-weight: bold;
+  border: 5px solid rgba(255, 175, 62, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.scoreboardOverlay {
+  /* bottom: 0; */
+  background-color: #000;
+  z-index: 2;
+}
+
+.scoreboardOverlay .playerName {
+  font-size: 1.6rem;
+}
+
+.scoreboardOverlay .header {
+  margin-bottom: 7rem;
+}
+
+.scoreSl {
+  font-size: 2.4rem;
+  margin-left: 5px;
+  color: #ffae3e;
+}
+
+.scoreboardBox .playerBox {
+  gap: 10px;
+}
+
+.playerScore {
+  color: #bd71ff;
+}
+
+.topPlayer {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+  /* align-items: center; */
+}
+
+.topPlayer .playerBox {
+  position: relative;
+  gap: 15px;
+}
+
+.topPlayer .playerName {
+  font-size: 1.6rem;
+}
+
+.topPlayer .avatarBox {
+  border: 2px solid rgba(202, 202, 202, 0.1);
+  border-radius: 50%;
+  padding: 15px;
+  height: 7rem;
+  width: 7rem;
+}
+
+.topPlayer .playerBox {
+  flex-direction: column;
+  background-color: transparent;
+  padding: 0;
+}
+
+.top1Player .avatarBox {
+  /* margin-bottom: 1rem; */
+  padding: 2rem;
+  margin-top: -3rem;
+  width: 9rem;
+  height: 9rem;
+}
+
+.topPlayer .scoreSl,
+.topPlayer .playerScore {
+  font-size: 1.6rem;
+}
+
+.topPlayer .playerNameBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.slScoreBox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.crown {
+  position: absolute;
+  top: -2rem;
+}
+
+.top1Player .crown {
+  top: -5.8rem;
+}
+
+.restPlayer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sbHomeBtnBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(transparent, #000);
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.homeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  padding: 10px 15px;
+  border-radius: 5rem;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.selectedOption {
+  background-color: #b9b9b9;
+}
+
+.correct {
+  background-color: #4bde61;
+}
+
+.selectedOption,
+.correct,
+.wrong {
+  transition: 300ms;
+}
+
+.selectedOption,
+.correct {
+  color: #0f0f0f;
+}
+
+.wrong {
+  background-color: #de4b4b;
+}
+
+/* .showCard {
+  animation: showElement 300ms forwards linear;
+}
+
+.showHomeBtn {
+  animation: showHome 300ms forwards linear;
+} */
+
+/* @keyframes showElement {
+  0% {
+    top: 100%;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes showHome {
+  0% {
+    bottom: -30%;
+  }
+
+  100% {
+    bottom: 0;
+  }
+} */

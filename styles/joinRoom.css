@@ -1,0 +1,56 @@
+body {
+  display: flex;
+}
+
+.label {
+  font-size: 2rem;
+}
+
+.mainInput {
+  border: 2px solid var(--inputBorderColor);
+  background-color: var(--inputBgColor);
+  font-size: 2.4rem;
+  border-radius: var(--inputRadius);
+  padding: var(--inputPadding);
+  text-align: center;
+  width: 100%;
+  color: var(--color);
+  margin-top: 20px;
+}
+
+.mainInput:focus {
+  outline: none;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+.bottomBtn .loaderBox {
+  border-radius: 10px;
+  /* margin-top: 1px; */
+}
+
+.joinError .mainInput {
+  border: 1px solid #ff8484;
+  position: relative;
+}
+
+.joinError::before {
+  color: #ff8484;
+  content: "Invalid Room Code";
+  width: 100%;
+  font-size: 1.6rem;
+  position: absolute;
+  left: 0;
+  bottom: -30px;
+  text-align: center;
+}

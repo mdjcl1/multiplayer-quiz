@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../scripts/lobby.js" defer></script>
+    <link rel="stylesheet" href="../styles/lobby.css" />
+    <link rel="stylesheet" href="../styles/quizGround.css" />
+    <link rel="stylesheet" href="../styles/loader.css" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <title>Lobby</title>
+  </head>
+  <body>
+    <!-- add "hoster" class to main-container to display host option -->
+    <div class="main-container hide" id="mainContainer">
+      <header class="header">
+        <div class="">
+          <p class="headerTitle">Quiz Lobby</p>
+          <img src="../assests/zigzagLine.svg" />
+        </div>
+        <img src="../assests/QALogo.svg" alt="Quiz App Logo" class="qaLogo" />
+      </header>
+
+      <div class="joiningCode hide">
+        <input
+          type="text"
+          value=""
+          id="code"
+          readonly
+          placeholder="Generating joining code ..."
+        />
+        <div>
+          <button class="copy" id="copy">
+            <img src="../assests/copy.svg" alt="copy code" />
+          </button>
+          <button class="share" id="share">
+            <img src="../assests/share.svg" alt="share code" />
+          </button>
+        </div>
+      </div>
+
+      <div class="allplayer hide" id="allplayer">
+        <div class="joinedPlayer">
+          <div class="joinedOn">
+            <p id="playerCount">You Joined</p>
+            <!-- <p>&nbsp;Players Joined</p> -->
+          </div>
+        </div>
+
+        <!-- it contain all players -->
+        <div class="joined-player-box" id="joined-player-box">
+          <!-- player card -->
+          <!-- <div class="playerBox online">
+            <div class="avatarBox">
+              <img src="/assests/image1.png" alt="avatar" />
+            </div>
+            <div class="playerNameBox" data-id="">
+              <p class="playerName">Alpha Ninja</p>
+              <p class="status">Online</p>
+            </div>
+            <button class="kickOutBtnBox">
+              <img
+                src="/assests/kickOut.svg"
+                alt="kick out button"
+                class="kickOutBtn hide"
+              />
+              <img src="/assests/edit.svg" alt="kick out button" class="hide" />
+            </button>
+          </div> -->
+
+          <!-- <div class="playerBox offline">
+            <div class="avatarBox">
+              <img src="/assests/image2.png" alt="avatar" />
+            </div>
+            <div class="playerNameBox">
+              <p class="playerName">Alpha Ninja</p>
+              <p class="status">Offline</p>
+            </div>
+            <button class="kickOutBtn">
+              <img src="/assests/kickOut.svg" alt="kick out button" />
+            </button>
+          </div> -->
+
+          <!-- <div class="playerBox online">
+            <div class="avatarBox">
+              <img src="/assests/image3.png" alt="avatar" />
+            </div>
+            <div class="playerNameBox">
+              <p class="playerName">Alpha Ninja</p>
+              <p class="status">Online</p>
+            </div>
+            <button class="kickOutBtn">
+              <img src="/assests/kickOut.svg" alt="kick out button" />
+            </button>
+          </div> -->
+        </div>
+        <!-- joined-player-box end -->
+      </div>
+
+      <div class="hostingOverlay hide" id="hostingOverlay">
+        <div class="hostingBox">
+          <div class="loading hostLoading" id="hostLoading">
+            <div class="loader"></div>
+            <p>Quiz Hosting</p>
+          </div>
+          <div class="readyBox hide" id="readyBox">
+            <p>Get Ready for Battle</p>
+            <p class="start3" id="start3">20</p>
+          </div>
+          <button class="hostCancel" id="hostCancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="waitingBox hide" id="waitingBox">
+        <img src="../assests/waiting.svg" alt="waiting image" class="waitImg" />
+        <p>Waiting for Players to Join ...</p>
+      </div>
+
+      <div class="actionBtnBox">
+        <div class="actionBtn hide">
+          <button class="lobbyEdit" id="lobbyEdit">
+            <img src="../assests/hostEdit.svg" alt="Add Question" />
+          </button>
+          <button class="hostQuiz" id="hostQuiz">
+            <img src="../assests/startQuiz.svg" /> Start Quiz
+          </button>
+          <button class="queDeleteBtn quiteGame" id="quiteGame">
+            <img src="../assests/logout.svg" alt="Add Question" />
+            <!-- <p id="quite"></p> -->
+          </button>
+        </div>
+
+        <button class="queDeleteBtn userExitLobby hide" id="userExitLobby">
+          <img src="../assests/logout.svg" alt="" />
+          <p id="quite">Exit Lobby</p>
+        </button>
+      </div>
+
+      <!-- confirmation overlay -->
+      <div class="overlay hide" id="hostKickoutMsg">
+        <div class="msgBox" id="playerExitMsg">
+          <h4>Are you Sure?</h4>
+          <p>
+            You are about to kick <br />
+            <span class="exitPlayer" id="hostKickoutPlayer">Aplha Master</span>
+            from the lobby
+          </p>
+          <div class="kickActionButton">
+            <button class="kickNo" id="kickNo">No</button>
+            <button class="kickYes" id="kickYes">Yes</button>
+          </div>
+        </div>
+
+        <div class="hostExitBox msgBox hide" id="hostExitBox">
+          <h4>Are you Sure?</h4>
+          <p>Do you want to close the Quiz ?</p>
+          <div class="kickActionButton">
+            <button class="kickNo" id="hostExitNo">No</button>
+            <button class="kickYes" id="hostExitYes">Yes</button>
+          </div>
+        </div>
+      </div>
+      <!-- confirmation overlay end -->
+    </div>
+
+    <!-- player exit overlay -->
+    <div class="overlay hide" id="playerOverlayExitMsg">
+      <div class="hostExitBox msgBox" id="hostExitBox">
+        <h4>Are you Sure?</h4>
+        <p>Do you want to close the Quiz ?</p>
+        <div class="kickActionButton">
+          <button class="kickNo" id="playerExitNo">No</button>
+          <button class="kickYes" id="playerExitYes">Yes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- quiz Ground -->
+    <div class="main-container quizGround hide" id="quizGround">
+      <header class="pgHeader">
+        <div class="playerInfoBox">
+          <div class="avatarBox quizGroundAvatar" id="quizGroundAvatar">
+            <!-- <img src="../assests/image1.png" alt="avatar" /> -->
+          </div>
+          <div class="playerInfo">
+            <p class="pgPlayerName" id="pgPlayerName">Alpha Ninja</p>
+            <p>Rank :&nbsp; <span class="pRank" id="pRank"> #2</span></p>
+            <p>Score :&nbsp; <span class="pScore" id="pScore"> 200</span></p>
+          </div>
+        </div>
+        <button class="scoreBoardBtn" id="scoreBoardBtn">
+          <img src="../assests/bar-chart.svg" class="pgImg" />
+          <p>Scoreboard</p>
+        </button>
+      </header>
+
+      <div class="pgQuestionBox">
+        <div class="quesTimerBox">
+          <p id="queCount">Question 04 / 20</p>
+          <p class="queTimer" id="queTimer"></p>
+        </div>
+
+        <div class="pgQueOptionBox-">
+          <p class="pgQuestion" id="pgQuestion">
+            Who invented the world’s first computer?
+          </p>
+          <div class="pgOptionBox" id="pgOptionBox">
+            <button class="pgOptions">Apple</button>
+            <button class="pgOptions">Mango</button>
+            <button class="pgOptions">Orange</button>
+            <button class="pgOptions">Grapes</button>
+          </div>
+        </div>
+      </div>
+      <div class="nextQueOverlay hide" id="nextQueOverlay">
+        <div class="nextCountDownBox">
+          <p>Next Question</p>
+          <p class="countDown" id="nextQueCountDown">30</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- scoreboard overlay -->
+    <div class="scoreboardOverlay hide" id="scoreboardOverlay">
+      <div class="scoreBox">
+        <div class="header">
+          <div class="">
+            <p class="headerTitle">Leaderboard</p>
+            <img src="../assests/zigzagLine.svg" />
+          </div>
+          <img src="../assests/QALogo.svg" alt="Quiz App Logo" class="qaLogo" />
+        </div>
+
+        <div class="scoreboardBox">
+          <div class="topPlayer" id="topPlayer">
+            <div class="playerBox" id="top2Player">
+              <div class="crown">
+                <img src="../assests/silver-crown.svg" />
+              </div>
+              <div class="avatarBox scoreAvatar">
+                <!-- <img src="../assests/image1.png" alt="avatar" /> -->
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <div class="slScoreBox">
+                  <p class="scoreSl">#2</p>
+                  <p class="playerScore">700</p>
+                </div>
+              </div>
+              <button class="celBtn hide">
+                <img
+                  src="../assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div>
+
+            <div class="playerBox top1Player" id="top1Player">
+              <div class="crown">
+                <img src="../assests/gold-crown.svg" />
+              </div>
+              <div class="avatarBox scoreAvatar">
+                <!-- <img src="../assests/image1.png" alt="avatar" /> -->
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <div class="slScoreBox">
+                  <p class="scoreSl">#1</p>
+                  <p class="playerScore">700</p>
+                </div>
+              </div>
+              <button class="celBtn hide">
+                <img
+                  src="../assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div>
+
+            <div class="playerBox" id="top3Player">
+              <div class="crown">
+                <img src="../assests/brown-crown.svg" />
+              </div>
+              <div class="avatarBox scoreAvatar">
+                <!-- <img src="../assests/image1.png" alt="avatar" /> -->
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <div class="slScoreBox">
+                  <p class="scoreSl">#3</p>
+                  <p class="playerScore">700</p>
+                </div>
+              </div>
+              <button class="celBtn hide">
+                <img
+                  src="../assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="restPlayer" id="restPlayer">
+            <!-- <div class="playerBox">
+              <p class="scoreSl">4</p>
+              <div class="avatarBox">
+                <img src="../assests/image1.png" alt="avatar" />
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <p class="playerScore">700</p>
+              </div>
+              <button class="celBtn">
+                <img
+                  src="../assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div> -->
+            <!-- <div class="playerBox">
+              <p class="scoreSl">4</p>
+              <div class="avatarBox">
+                <img src="/assests/image1.png" alt="avatar" />
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <p class="playerScore">700</p>
+              </div>
+              <button class="celBtn">
+                <img
+                  src="/assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div>
+            <div class="playerBox">
+              <p class="scoreSl">4</p>
+              <div class="avatarBox">
+                <img src="/assests/image1.png" alt="avatar" />
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <p class="playerScore">700</p>
+              </div>
+              <button class="celBtn">
+                <img
+                  src="/assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div>
+            <div class="playerBox">
+              <p class="scoreSl">4</p>
+              <div class="avatarBox">
+                <img src="/assests/image1.png" alt="avatar" />
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <p class="playerScore">700</p>
+              </div>
+              <button class="celBtn">
+                <img
+                  src="/assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div>
+            <div class="playerBox">
+              <p class="scoreSl">4</p>
+              <div class="avatarBox">
+                <img src="/assests/image1.png" alt="avatar" />
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <p class="playerScore">700</p>
+              </div>
+              <button class="celBtn">
+                <img
+                  src="/assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div>
+            <div class="playerBox">
+              <p class="scoreSl">4</p>
+              <div class="avatarBox">
+                <img src="/assests/image1.png" alt="avatar" />
+              </div>
+              <div class="playerNameBox" data-id="">
+                <p class="playerName">Alpha Ninja</p>
+                <p class="playerScore">700</p>
+              </div>
+              <button class="celBtn">
+                <img
+                  src="/assests/celebrate.svg"
+                  alt="kick out button"
+                  class="kickOutBtn"
+                />
+              </button>
+            </div> -->
+          </div>
+        </div>
+
+        <!-- home button -->
+        <div class="sbHomeBtnBox">
+          <button class="homeBtn" id="homeBtn">
+            <img src="../assests/home.svg" /> Home
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- quiz Ground end -->
+
+    <!-- new user join box -->
+    <div class="newUserBox hide" id="newUserBox">
+      <div class="newUser">
+        <div class="newUserAvatarBox" id="newUserAvatarBox">
+          <!-- <img src="../assests/profile.svg" alt="avatar" id="playerAvatar" /> -->
+          <button class="avatarReload" id="avatarReload">
+            <img src="../assests/reload.svg" alt="avatar reload button" />
+          </button>
+        </div>
+        <input
+          type="text"
+          class="newPlayerName"
+          id="newPlayerName"
+          placeholder="Enter your name"
+        />
+        <button class="addNewPlayer" id="addNewPlayer">
+          <p class="" id="saveProfile">Save Profile</p>
+          <div class="newLoad loading hide" id="saveProfileLoader">
+            <div class="loader"></div>
+            <p>Updating...</p>
+          </div>
+        </button>
+      </div>
+    </div>
+    <!-- new user join box end -->
+  </body>
+</html>

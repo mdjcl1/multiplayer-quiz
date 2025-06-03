@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/createQuiz.css" />
+    <title>Create Quiz</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <div>
+          <p class="headerTitle">Create Quiz</p>
+          <img src="../assests/zigzagLine.svg" />
+        </div>
+        <img src="../assests/QALogo.svg" alt="Quiz App Logo" class="qaLogo" />
+      </header>
+      <main class="createQuizMain">
+        <div class="queTimeBox">
+          <div>
+            <p class="headingTitle">Number of Questions</p>
+            <p class="subDesc">
+              Allowed Number of Questions is between 4 and 50.
+            </p>
+          </div>
+          <input
+            type="number"
+            class="queTimeInput inputBg"
+            value="4"
+            id="noOfQue"
+          />
+        </div>
+
+        <div class="queTimeBox">
+          <div>
+            <p class="headingTitle">Time for one Question</p>
+            <p class="subDesc">
+              Amount of time to attemp single question should be between 10 to
+              30 seconds.
+            </p>
+          </div>
+          <div class="inSec">
+            <input
+              type="number"
+              class="queTimeInput inputBg"
+              value="10"
+              id="oneQueTime"
+            />
+          </div>
+        </div>
+
+        <div class="queTimeBox">
+          <div>
+            <p class="headingTitle">Time Between Questions</p>
+            <p class="subDesc">
+              Amount of time between each questions should be between 3 to 30
+              seconds.
+            </p>
+          </div>
+          <div class="inSec">
+            <input
+              type="number"
+              class="queTimeInput inputBg"
+              value="3"
+              id="timeBtwQue"
+            />
+          </div>
+        </div>
+
+        <div class="shuffle">
+          <input type="checkbox" class="shuffleInput" id="shuffleInput" />
+          <div>
+            <p class="headingTitle">Auto Shuffle</p>
+            <p class="subDesc">
+              Shuffle the order of questions before serving to the players
+            </p>
+          </div>
+        </div>
+
+        <div class="queTimeBox">
+          <div>
+            <p class="headingTitle">Choose the template</p>
+            <p class="subDesc temp">
+              Choose among these premade quiz template or Go from scratch.
+            </p>
+          </div>
+        </div>
+
+        <div class="quizCardBox">
+          <button class="quizCard">
+            <p class="cardTitle">
+              Blank <br />
+              Template
+            </p>
+            <img src="../assests/tick.svg" class="tickSign hide" />
+          </button>
+
+          <button class="quizCard">
+            <p class="cardTitle">
+              Computer <br />
+              Science
+            </p>
+            <img src="../assests/computer-setting.svg" class="cardImg" />
+            <img src="../assests/tick.svg" class="tickSign hide" />
+          </button>
+
+          <button class="quizCard">
+            <p class="cardTitle blTitle">
+              Animal <br />
+              Kingdom
+            </p>
+            <img src="../assests/turtle.svg" class="cardImg" />
+            <img src="../assests/tick.svg" class="tickSign hide" />
+          </button>
+
+          <button class="quizCard">
+            <p class="cardTitle blTitle">
+              Computer <br />
+              Programming
+            </p>
+            <img src="../assests/slack.svg" class="cardImg" />
+            <img src="../assests/tick.svg" class="tickSign hide" />
+          </button>
+        </div>
+      </main>
+    </div>
+    <div class="footerOverlay">&nbsp;</div>
+    <button class="createQuizNextBtn hide" id="createQuizNextBtn">Next</button>
+
+    <script src="../scripts/createQuiz.js"></script>
+  </body>
+</html>
