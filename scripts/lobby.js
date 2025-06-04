@@ -177,6 +177,8 @@ const hidePlayer = function () {
 const setAvatar = function () {
   const [seed, avatarUrl] = getNewAvatarPanda();
   avatarSeed = seed;
+  console.log(seed, avatarUrl);
+
   document.getElementById(
     "newUserAvatarBox"
   ).style.backgroundImage = `url(${avatarUrl}), url(../assests/user.png)`;
@@ -205,7 +207,14 @@ const playersSynced = function (timeInSec) {
   // time set by host, then it call startQuiz to start the quiz
 
   setTimeout(() => {
-    startQuiz();
+    if (user === "player") {
+      startQuiz();
+    } else {
+      hostingOverlay.classList.add("hide");
+      hostScoreBoard();
+      // console.log(oneQueTime);
+      // console.log(timeBtwQue);
+    }
   }, timeInSec * 1000);
 };
 
@@ -314,8 +323,6 @@ share.addEventListener("click", function () {
       title: "Code",
       url: "?code=" + document.getElementById("code").value,
     });
-  } else {
-    console.log("else");
   }
 });
 
@@ -380,7 +387,7 @@ joinedPlayerBox.addEventListener("click", function (e) {
   if (e.target.classList.contains("playerEdit")) {
     const saveProfile = document.getElementById("saveProfile");
     // currentUser = e.target.closest(".playerBox");
-    console.log("edit");
+    // console.log("edit");
     saveProfile.classList.remove("hide");
     document.getElementById("saveProfileLoader").classList.add("hide");
     saveProfile.innerText = "Update Profile";
@@ -491,7 +498,6 @@ const displayQuestion = function (obj, correctAns, isLast) {
   const timeBtwQue = localStorage.getItem("timeBtwQue");
   const times = Number.parseInt(oneQueTime);
   startCountdown(queTimer, times);
-  console.log(nextQueCountDown);
 
   setTimeout(() => {
     checkCorrectAns(correctAns);
@@ -521,7 +527,9 @@ const displayQuestion = function (obj, correctAns, isLast) {
         });
 
         // sort leaderboardArray in ascending order based on rank
-        leaderboardArray.sort((a, b) => a.rank - b.rank);
+        // leaderboardArray.sort((a, b) => a.rank - b.rank);
+        console.log(leaderboardArray);
+
         showLeaderBoard(leaderboardArray);
       }
     }, 2000);
@@ -541,7 +549,7 @@ function checkCorrectAns(correctAns) {
     ) {
       if (joinedPlayers[selfId]) {
         joinedPlayers[selfId].score += 100;
-        console.log(joinedPlayers, "Correct");
+        // console.log(joinedPlayers, "Correct");
         playerControls.sendPlayerDetails(joinedPlayers[selfId], hostId);
       }
       opt.classList.remove("selectedOption");
@@ -550,7 +558,7 @@ function checkCorrectAns(correctAns) {
     } else if (opt.classList.contains("selectedOption")) {
       if (joinedPlayers[selfId]) {
         joinedPlayers[selfId].score -= 50;
-        console.log(joinedPlayers, "Wrong");
+        // console.log(joinedPlayers, "Wrong");
         playerControls.sendPlayerDetails(joinedPlayers[selfId], hostId);
       }
     }
@@ -657,28 +665,8 @@ function showLeaderBoard(obj) {
   console.log(obj);
   document.getElementById("scoreboardOverlay").classList.remove("hide");
   quizGround.classList.add("hide");
-  // showScoreboard();
   const topPlayers = document.getElementById("topPlayer");
   const restPlayer = document.getElementById("restPlayer");
-
-  // setting top 2nd player data
-  topPlayers.children[0].getElementsByClassName("playerName")[0].innerText =
-    obj[1].name;
-  topPlayers.children[0].getElementsByClassName(
-    "scoreSl"
-  )[0].innerText = `#${obj[1].rank}`;
-  topPlayers.children[0].getElementsByClassName("playerScore")[0].innerText =
-    obj[1].score;
-  topPlayers.children[0].getElementsByClassName(
-    "scoreAvatar"
-  )[0].style.backgroundImage = `url(${obj[1].avatarSrc}), url("../assests/user.png")`;
-  // topPlayers.children[0].getElementsByTagName(
-  //   ".avatarBox img"
-  // )[0].style.backgroundImage = `url(${obj[1].avatarSrc}), url("../assests/user.png")`;
-  // obj[1].avatarSrc;
-  // el.getElementsByClassName(
-  //   "avatarBox"
-  // )[0].style.backgroundImage = `url(${avatarUrl}), url("../assests/user.png")`;
 
   // setting top 1st player data
   topPlayers.children[1].getElementsByClassName("playerName")[0].innerText =
@@ -691,8 +679,19 @@ function showLeaderBoard(obj) {
   topPlayers.children[1].getElementsByClassName(
     "scoreAvatar"
   )[0].style.backgroundImage = `url(${obj[0].avatarSrc}), url("../assests/user.png")`;
-  // topPlayers.children[1].getElementsByTagName(".avatarBox img")[0].src =
-  //   obj[0].avatarSrc;
+  console.log(obj[0].avatarSrc);
+
+  // setting top 2nd player data
+  topPlayers.children[0].getElementsByClassName("playerName")[0].innerText =
+    obj[1].name;
+  topPlayers.children[0].getElementsByClassName(
+    "scoreSl"
+  )[0].innerText = `#${obj[1].rank}`;
+  topPlayers.children[0].getElementsByClassName("playerScore")[0].innerText =
+    obj[1].score;
+  topPlayers.children[0].getElementsByClassName(
+    "scoreAvatar"
+  )[0].style.backgroundImage = `url(${obj[1].avatarSrc}), url("../assests/user.png")`;
 
   // setting top 3rd player data
   topPlayers.children[2].getElementsByClassName("playerName")[0].innerText =
@@ -705,13 +704,8 @@ function showLeaderBoard(obj) {
   topPlayers.children[2].getElementsByClassName(
     "scoreAvatar"
   )[0].style.backgroundImage = `url(${obj[2].avatarSrc}), url("../assests/user.png")`;
-  // topPlayers.children[2].getElementsByTagName(".avatarBox img")[0].src =
-  //   obj[2].avatarSrc;
 
   let card;
-
-  // console.log(obj.length);
-  // <img src="${obj[i + 3].avatarSrc}" alt="avatar" />
 
   // setting others player data
   for (let i = 0; i < obj.length - 3; i++) {
@@ -740,8 +734,6 @@ function showLeaderBoard(obj) {
   }
 }
 
-// document.getElementById("mainContainer").style = "display: none";
-
 async function hostLobbyPanda() {
   const config = {
     appId:
@@ -753,7 +745,7 @@ async function hostLobbyPanda() {
   const [sendRequest, getRequest] = room.makeAction("request");
 
   room.onPeerJoin((peerId) => {
-    console.log(peerId + " joined");
+    // console.log(peerId + " joined");
     sendRequest("HI", peerId);
 
     // Sync LocalStorage Data
@@ -762,7 +754,7 @@ async function hostLobbyPanda() {
     localData["oneQueTime"] = localStorage.getItem("oneQueTime");
     localData["timeBtwQue"] = localStorage.getItem("timeBtwQue");
 
-    console.log(localData);
+    // console.log(localData);
 
     sendRequest("SYNC_DATA%%" + JSON.stringify(localData), peerId);
   });
@@ -781,10 +773,9 @@ async function hostLobbyPanda() {
   });
 
   getPlayerDetails((playerDetails, peerId) => {
-    console.log("new: ", playerDetails);
+    // console.log("new: ", playerDetails);
     const newJoinedPlayersData = JSON.parse(JSON.stringify(joinedPlayers));
     if (!(peerId in newJoinedPlayersData)) {
-      // console.log("updating");
       addPlayerToLobby(
         peerId,
         playerDetails.name,
@@ -860,12 +851,14 @@ async function joinLobbyPanda(joiningCode) {
         break;
       case "HI":
         hostId = peerId;
-        console.log("Connected to Host");
+        // console.log("Connected to Host");
         break;
       case "BYE_BYE":
         window.location = "../index.html";
         break;
       case "QUIZ_TIME":
+        // console.log("quiz time");
+
         quizTime = Number.parseInt(req.split("%%")[1]);
         const questionData = req.split("%%")[2];
         queObj = JSON.parse(questionData);
@@ -877,7 +870,7 @@ async function joinLobbyPanda(joiningCode) {
         break;
       case "SYNC_DATA":
         const data = JSON.parse(req.split("%%")[1]);
-        console.log(data);
+        // console.log(data);
         localStorage.setItem("noOfQue", data["noOfQue"]);
         localStorage.setItem("oneQueTime", data["oneQueTime"]);
         localStorage.setItem("timeBtwQue", data["timeBtwQue"]);
@@ -886,15 +879,15 @@ async function joinLobbyPanda(joiningCode) {
   });
 
   getPlayerDetails((updatedPlayerDetails, peerId) => {
-    console.log("Updated: ", updatedPlayerDetails);
+    // console.log("Updated: ", updatedPlayerDetails);
     let newJoinedPlayersData = { ...updatedPlayerDetails };
 
     const [newlyJoinedPlayers, changedOldPlayers, removedPlayerIds] =
       getPlayersDiffs(joinedPlayers, newJoinedPlayersData);
 
-    console.log("Newly Joined Players: ", newlyJoinedPlayers);
-    console.log("Changed Old Players: ", changedOldPlayers);
-    console.log("Removed Player IDs: ", removedPlayerIds);
+    // console.log("Newly Joined Players: ", newlyJoinedPlayers);
+    // console.log("Changed Old Players: ", changedOldPlayers);
+    // console.log("Removed Player IDs: ", removedPlayerIds);
 
     for (const [playerId, playerDetails] of Object.entries(
       newlyJoinedPlayers
@@ -947,8 +940,8 @@ if (!user || user === "host") {
 }
 
 function getPlayersDiffs(oldPlayerDetails, newPlayerDetails) {
-  console.log("Old Players: ", oldPlayerDetails);
-  console.log("New Players: ", newPlayerDetails);
+  // console.log("Old Players: ", oldPlayerDetails);
+  // console.log("New Players: ", newPlayerDetails);
   const newlyJoinedPlayers = Object.fromEntries(
     Object.entries(newPlayerDetails).filter(
       ([key, value]) => !(key in oldPlayerDetails)
@@ -990,4 +983,21 @@ function seedToUrl(seed) {
   const svgCode = multiavatar(seed);
   const blob = new Blob([svgCode], { type: "image/svg+xml" });
   return URL.createObjectURL(blob);
+}
+
+function hostScoreBoard() {
+  const players = [];
+  const totalQue = Number.parseInt(localStorage.getItem("noOfQue"));
+  const totalTime = totalQue * (Number(oneQueTime) + Number(timeBtwQue) + 2);
+  console.log(totalTime);
+  setTimeout(() => {
+    console.log(totalTime);
+    Object.keys(joinedPlayers).forEach((key) =>
+      players.push(joinedPlayers[key])
+    );
+
+    const temp = sortPlayersByScore(players);
+    console.log(temp);
+    showLeaderBoard(temp);
+  }, totalTime * 1000);
 }
